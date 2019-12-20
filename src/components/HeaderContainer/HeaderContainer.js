@@ -10,7 +10,7 @@ class HeaderContainer extends PureComponent {
     this.state = {
       selected: "English"
     };
-    this.menuItems = [
+    this.menuDropdown = [
       {
         key: 1,
         value: "English"
@@ -28,7 +28,7 @@ class HeaderContainer extends PureComponent {
     });
   };
   handleMenuClick = e => {
-    let newSelected = this.menuItems.find(
+    let newSelected = this.menuDropdown.find(
       item => item.key === parseInt(e.key, 10)
     ).value;
     this.setState({ selected: newSelected });
@@ -44,7 +44,7 @@ class HeaderContainer extends PureComponent {
         }}
         onClick={this.handleMenuClick}
       >
-        {this.menuItems.map(item => {
+        {this.menuDropdown.map(item => {
           return <Menu.Item key={item.key}>{item.value}</Menu.Item>;
         })}
       </Menu>
@@ -55,25 +55,33 @@ class HeaderContainer extends PureComponent {
     const { selected } = this.state;
     return (
       <Row style={styles.container}>
-        <Col span={14}>
+        <Col span={8}>
           <Button style={styles.btnLogo} onClick={this.navTo("home")}>
-            <img
-              style={styles.logo}
-              alt={"logo"}
-              src={require("../../utils/images/logo.png")}
-            />
-            LFC HD
+            HOME
           </Button>
         </Col>
-        <Col span={10}>
-          <Row style={{ alignItems: "flex-end" }}>
-            <Button onClick={this.navTo("jobs")}>Jobs</Button>
-            <Button onClick={this.navTo("faq")}>FAQ</Button>
-            <Select defaultValue="lucy">
+        <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
+          <img
+            style={styles.logo}
+            alt={"logo"}
+            src={require("../../utils/images/logo.png")}
+          />
+        </Col>
+        <Col span={8}>
+          <Row type="flex" align="end">
+            <Button style={styles.btnJobFAQ} onClick={this.navTo("champion")}>
+              Champions
+            </Button>
+            <Button style={styles.btnJobFAQ} onClick={this.navTo("news")}>
+              News
+            </Button>
+            <Button style={styles.btnJobFAQ} onClick={this.navTo("submitGame")}>
+              Register
+            </Button>
+            <Select style={styles.dropdown} defaultValue="lucy">
               <Select.Option value="jack">Jack</Select.Option>
               <Select.Option value="lucy">Lucy</Select.Option>
             </Select>
-            <Button onClick={this.navTo("submitGame")}>SUBMIT YOUR GAME</Button>
           </Row>
         </Col>
       </Row>
@@ -83,39 +91,40 @@ class HeaderContainer extends PureComponent {
 
 const styles = {
   container: {
-    background: COLOR.main_color,
+    background: COLOR.black,
     display: "flex",
     height: 40,
     overflow: "hidden",
-    padding: 0
+    padding: 0,
+    alignItems: "center"
   },
   btnLogo: {
     height: 40,
-    width: "100%",
     display: "flex",
-    flexDirection: "row",
     alignItems: "center",
     fontSize: SIZE.text,
     borderWidth: 0,
-    backgroundColor: COLOR.main_color,
+    backgroundColor: COLOR.black,
     color: COLOR.white
   },
   logo: {
     width: 100,
     height: 40
   },
-  header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    height: 40
+  menuLeft: {},
+  dropdown: {
+    width: 100,
+    fontSize: SIZE.small_text,
+    borderWidth: 0,
+    alignSelf: "center",
+    backgroundColor: COLOR.black
   },
   btnJobFAQ: {
-    backgroundColor: COLOR.main_color,
+    backgroundColor: COLOR.black,
     color: COLOR.white,
     borderWidth: 0,
     height: 40,
-    fontSize: SIZE.text,
+    fontSize: SIZE.small_text,
     paddingRight: SIZE.app_padding,
     paddingLeft: SIZE.app_padding
   },
@@ -124,7 +133,7 @@ const styles = {
     color: COLOR.white,
     height: 40,
     borderWidth: 0,
-    fontSize: SIZE.text
+    fontSize: SIZE.small_text
   }
 };
 
