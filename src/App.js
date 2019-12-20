@@ -9,11 +9,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Layout>
-          <HeaderContainer />
-          <AppRouter />
-          <FooterContainer />
-        </Layout>
+        <HeaderContainer />
+        <AppRouter />
+        <FooterContainer />
       </Router>
     );
   }

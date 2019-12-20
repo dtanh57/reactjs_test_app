@@ -1,49 +1,82 @@
-import React, { Component } from "react";
-import { Layout, Icon, Button } from "antd";
+import React, { PureComponent } from "react";
+import { Layout, Icon, Button, Menu, Select, Row, Col } from "antd";
 import { COLOR, SIZE } from "../../utils/";
 import { withRouter } from "react-router-dom";
 
 const { Header } = Layout;
+class HeaderContainer extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: "English"
+    };
+    this.menuItems = [
+      {
+        key: 1,
+        value: "English"
+      },
+      {
+        key: 2,
+        value: "Vietnamese"
+      }
+    ];
+  }
 
-class HeaderContainer extends Component {
   navTo = value => () => {
     this.props.history.push(`/${value}`, {
       // name: item.id
     });
   };
+  handleMenuClick = e => {
+    let newSelected = this.menuItems.find(
+      item => item.key === parseInt(e.key, 10)
+    ).value;
+    this.setState({ selected: newSelected });
+  };
+
+  renderDropdown = () => {
+    return (
+      <Menu
+        style={{
+          backgroundColor: COLOR.main_color,
+          width: "20%",
+          justifyContent: "flex-end"
+        }}
+        onClick={this.handleMenuClick}
+      >
+        {this.menuItems.map(item => {
+          return <Menu.Item key={item.key}>{item.value}</Menu.Item>;
+        })}
+      </Menu>
+    );
+  };
 
   render() {
+    const { selected } = this.state;
     return (
-      <Header style={styles.container}>
-        <Button style={styles.btnLogo} onClick={this.navTo("home")}>
-          <img
-            alt={"logo"}
-            style={styles.logo}
-            src={require("../../utils/images/logo.png")}
-          />
-          LFC HD
-        </Button>
-        <div style={this.header}>
-          <Button style={styles.btnJobFAQ} onClick={this.navTo("jobs")}>
-            Jobs
+      <Row style={styles.container}>
+        <Col span={14}>
+          <Button style={styles.btnLogo} onClick={this.navTo("home")}>
+            <img
+              style={styles.logo}
+              alt={"logo"}
+              src={require("../../utils/images/logo.png")}
+            />
+            LFC HD
           </Button>
-          <Button style={styles.btnJobFAQ} onClick={this.navTo("faq")}>
-            FAQ
-          </Button>
-          <Button
-            style={{
-              ...styles.btnJobFAQ,
-              borderLeftWidth: 1,
-              borderColor: COLOR.grey_light
-            }}
-          >
-            <Icon type="flag" /> Language <Icon type="caret-down" />
-          </Button>
-          <Button style={styles.btnSubmit} onClick={this.navTo("submitGame")}>
-            SUBMIT YOUR GAME
-          </Button>
-        </div>
-      </Header>
+        </Col>
+        <Col span={10}>
+          <Row style={{ alignItems: "flex-end" }}>
+            <Button onClick={this.navTo("jobs")}>Jobs</Button>
+            <Button onClick={this.navTo("faq")}>FAQ</Button>
+            <Select defaultValue="lucy">
+              <Select.Option value="jack">Jack</Select.Option>
+              <Select.Option value="lucy">Lucy</Select.Option>
+            </Select>
+            <Button onClick={this.navTo("submitGame")}>SUBMIT YOUR GAME</Button>
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }
@@ -52,18 +85,17 @@ const styles = {
   container: {
     background: COLOR.main_color,
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
     height: 40,
-    overflow: "hidden"
+    overflow: "hidden",
+    padding: 0
   },
   btnLogo: {
+    height: 40,
+    width: "100%",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     fontSize: SIZE.text,
-    margin: 0,
     borderWidth: 0,
     backgroundColor: COLOR.main_color,
     color: COLOR.white
