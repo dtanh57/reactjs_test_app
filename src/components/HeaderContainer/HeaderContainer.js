@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Layout, Icon, Button, Menu, Row, Col, Dropdown } from "antd";
 import { COLOR, SIZE } from "../../utils/";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 
 class HeaderContainer extends PureComponent {
   constructor(props) {
@@ -46,46 +46,72 @@ class HeaderContainer extends PureComponent {
   render() {
     const { selected } = this.state;
     return (
-      <Row style={styles.container}>
-        <Col span={8}>
-          <Button style={styles.btnLogo} onClick={this.navTo("home")}>
-            HOME
-          </Button>
-        </Col>
-        <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
-          <img
-            style={styles.logo}
-            alt={"logo"}
-            src={require("../../utils/images/logo.png")}
-          />
-        </Col>
-        <Col span={8}>
-          <Row type="flex" align="end">
-            <Button style={styles.btnJobFAQ} onClick={this.navTo("champion")}>
-              Champions
+      <div>
+        <Row style={styles.container}>
+          <Col span={8}>
+            <Button style={styles.btnLogo} onClick={this.navTo("home")}>
+              HOME
             </Button>
-            <Button style={styles.btnJobFAQ} onClick={this.navTo("news")}>
-              News
-            </Button>
-            <Button style={styles.btnJobFAQ} onClick={this.navTo("submitGame")}>
-              Register
-            </Button>
-            {/* <Select
-              className="ant-select-selection"
-              style={styles.dropdown}
-              defaultValue="lucy"
-            >
-              <Select.Option value="jack">Jack</Select.Option>
-              <Select.Option value="lucy">Lucy</Select.Option>
-            </Select> */}
-            <Dropdown overlay={this.renderDropdown} trigger={["click"]}>
-              <Button style={styles.btnSubmit}>
-                {selected} <Icon type="down" />
+          </Col>
+          <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
+            <img
+              style={styles.logo}
+              alt={"logo"}
+              src={require("../../utils/images/logo.png")}
+            />
+          </Col>
+          <Col span={8}>
+            <Row type="flex" align="end">
+              <Button style={styles.btnJobFAQ} onClick={this.navTo("champion")}>
+                Champions
               </Button>
-            </Dropdown>
-          </Row>
-        </Col>
-      </Row>
+              <Button style={styles.btnJobFAQ} onClick={this.navTo("news")}>
+                News
+              </Button>
+              <Button
+                style={styles.btnJobFAQ}
+                onClick={this.navTo("submitGame")}
+              >
+                Register
+              </Button>
+              <Dropdown overlay={this.renderDropdown} trigger={["click"]}>
+                <Button style={styles.btnSubmit}>
+                  {selected} <Icon type="down" />
+                </Button>
+              </Dropdown>
+            </Row>
+          </Col>
+        </Row>
+        <Row style={styles.containerBelow}>
+          <Col span={10} style={{ display: "flex", justifyContent: "center" }}>
+            <img
+              style={{ height: 80 }}
+              src={require("../../utils/images/logo.png")}
+            />
+          </Col>
+          <Col
+            span={14}
+            style={{
+              display: "flex",
+              height: 80,
+              backgroundColor: "black",
+              justifyContent: "flex-end",
+              paddingRight: 100,
+              alignItems: "center"
+            }}
+          >
+            <NavLink style={styles.menuBelow} to="/faq">
+              FAQ
+            </NavLink>
+            <NavLink style={styles.menuBelow} to="/about">
+              About Us
+            </NavLink>
+            <NavLink style={styles.menuBelow} to="/contact">
+              Contact Us
+            </NavLink>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }
@@ -98,6 +124,17 @@ const styles = {
     overflow: "hidden",
     padding: 0,
     alignItems: "center"
+  },
+  containerBelow: {
+    display: "flex",
+    height: 80,
+    overflow: "hidden",
+    alignItems: "center"
+  },
+  menuBelow: {
+    color: COLOR.white,
+    fontSize: SIZE.text,
+    marginRight: 40
   },
   btnLogo: {
     height: 40,
