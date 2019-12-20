@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout, Icon, Button } from "antd";
 import { COLOR, SIZE } from "../../utils/";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const { Header } = Layout;
 
@@ -17,6 +17,7 @@ class HeaderContainer extends Component {
       <Header style={styles.container}>
         <Button style={styles.btnLogo} onClick={this.navTo("home")}>
           <img
+            alt={"logo"}
             style={styles.logo}
             src={require("../../utils/images/logo.png")}
           />
