@@ -1,9 +1,8 @@
 import React, { PureComponent } from "react";
-import { Layout, Icon, Button, Menu, Select, Row, Col } from "antd";
+import { Layout, Icon, Button, Menu, Row, Col, Dropdown } from "antd";
 import { COLOR, SIZE } from "../../utils/";
 import { withRouter } from "react-router-dom";
 
-const { Header } = Layout;
 class HeaderContainer extends PureComponent {
   constructor(props) {
     super(props);
@@ -27,7 +26,7 @@ class HeaderContainer extends PureComponent {
       // name: item.id
     });
   };
-  handleMenuClick = e => {
+  onDropdownClick = e => {
     let newSelected = this.menuDropdown.find(
       item => item.key === parseInt(e.key, 10)
     ).value;
@@ -36,14 +35,7 @@ class HeaderContainer extends PureComponent {
 
   renderDropdown = () => {
     return (
-      <Menu
-        style={{
-          backgroundColor: COLOR.main_color,
-          width: "20%",
-          justifyContent: "flex-end"
-        }}
-        onClick={this.handleMenuClick}
-      >
+      <Menu onClick={this.onDropdownClick}>
         {this.menuDropdown.map(item => {
           return <Menu.Item key={item.key}>{item.value}</Menu.Item>;
         })}
@@ -78,10 +70,19 @@ class HeaderContainer extends PureComponent {
             <Button style={styles.btnJobFAQ} onClick={this.navTo("submitGame")}>
               Register
             </Button>
-            <Select style={styles.dropdown} defaultValue="lucy">
+            {/* <Select
+              className="ant-select-selection"
+              style={styles.dropdown}
+              defaultValue="lucy"
+            >
               <Select.Option value="jack">Jack</Select.Option>
               <Select.Option value="lucy">Lucy</Select.Option>
-            </Select>
+            </Select> */}
+            <Dropdown overlay={this.renderDropdown} trigger={["click"]}>
+              <Button style={styles.btnSubmit}>
+                {selected} <Icon type="down" />
+              </Button>
+            </Dropdown>
           </Row>
         </Col>
       </Row>
@@ -110,14 +111,6 @@ const styles = {
   logo: {
     width: 100,
     height: 40
-  },
-  menuLeft: {},
-  dropdown: {
-    width: 100,
-    fontSize: SIZE.small_text,
-    borderWidth: 0,
-    alignSelf: "center",
-    backgroundColor: COLOR.black
   },
   btnJobFAQ: {
     backgroundColor: COLOR.black,

@@ -15,7 +15,7 @@ export default class Home extends Component {
 const styles = {
   container: {
     width: "100%",
-    height: 500,
+    minHeight: 1000,
     backgroundColor: "green",
     justifyContent: "center",
     alignItems: "center"
