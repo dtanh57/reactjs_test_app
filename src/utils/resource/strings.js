@@ -24,7 +24,18 @@ const string_en = {
   quotes: "QUOTES",
   stay_connected: "STAY CONNECTED",
   terms_of_service: "Terms of Service",
-  privacy_policy: "Privacy Policy"
+  privacy_policy: "Privacy Policy",
+  frequently_asked_question: "FREQUENTLY ASKED QUESTIONS",
+  intro_contact:
+    "We’d love to hear from you. For general inquiries, fill out the form below and we’ll get back with you shortly.",
+  your_name: "Your name",
+  your_email: "Your email",
+  subject: "Subject",
+  what_you_think: "What do you think about me?",
+  your_message: "Your message",
+  your_name_placeholder: "Enter your name",
+  your_email_placeholder: "Enter your email",
+  your_subject_placeholder: "Enter your subject"
 };
 const string_vi = {
   home: "Trang chủ",
@@ -46,7 +57,18 @@ const string_vi = {
   quotes: "QUOTES HAY",
   stay_connected: "Liên lạc",
   terms_of_service: "Điều khoản dịch vụ",
-  privacy_policy: "Chính sách bảo mật"
+  privacy_policy: "Chính sách bảo mật",
+  frequently_asked_question: "NHỮNG CÂU HỎI THƯỜNG GẶP",
+  intro_contact:
+    "Tôi rất muốn được nhận những góp ý từ bạn. Hãy điền vào mẫu dưới đây và tôi sẽ sớm liên hệ lại với bạn.",
+  your_name: "Tên của bạn",
+  your_email: "Email của bạn",
+  subject: "Chủ đề",
+  what_you_think: "Bạn nghĩ gì về tui",
+  your_message: "Tin nhắn của bạn",
+  your_name_placeholder: "Nhập tên của bạn",
+  your_email_placeholder: "Nhập email của bạn",
+  your_subject_placeholder: "Nhập subject của bạn"
 };
 
 let STRINGS = { ...string_vi, ...string_en };

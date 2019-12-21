@@ -1,9 +1,18 @@
 import React, { Component } from "react";
-import { Row, Col, Icon } from "antd";
+import { Row, Col, Icon, Button } from "antd";
 import { COLOR, SIZE, STRINGS } from "../../utils";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, matchPath, withRouter } from "react-router-dom";
+import { HeaderService } from "../HeaderContainer/services/HeaderService";
 
-export default class FooterContainer extends Component {
+class FooterContainer extends Component {
+  navToAbout = () => {
+    this.props.history.push(`/home`, {
+      data: { scrollToAbout: true }
+    });
+    if (!!matchPath(this.props.location.pathname, "/home")) {
+      HeaderService.set({ scrollToAbout: true });
+    }
+  };
   render() {
     return (
       <Row
@@ -39,7 +48,18 @@ export default class FooterContainer extends Component {
             </Col>
             <Col span={12} style={styles.col}>
               <NavLink to="/faq">{STRINGS.faq}</NavLink>
-              <NavLink to="/about">{STRINGS.about}</NavLink>
+              {/* <NavLink to="/about">{STRINGS.about}</NavLink> */}
+              <Button
+                style={{
+                  color: "#1090FF",
+                  backgroundColor: "transparent",
+                  borderWidth: 0,
+                  padding: 0
+                }}
+                onClick={this.navToAbout}
+              >
+                {STRINGS.about}
+              </Button>
               <NavLink to="/contact">{STRINGS.contact_us}</NavLink>
             </Col>
           </Row>
@@ -101,3 +121,5 @@ const styles = {
     fontSize: SIZE.text
   }
 };
+
+export default withRouter(FooterContainer);
