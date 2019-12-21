@@ -21,9 +21,9 @@ class HeaderContainer extends PureComponent {
     ];
   }
 
-  navTo = value => () => {
+  navTo = (value, data = {}) => () => {
     this.props.history.push(`/${value}`, {
-      // name: item.id
+      data: data
     });
   };
   onDropdownClick = e => {
@@ -96,17 +96,26 @@ class HeaderContainer extends PureComponent {
               backgroundColor: COLOR.grey_light,
               height: 80,
               justifyContent: "flex-end",
-              paddingRight: 100,
               alignItems: "center",
-              backgroundImage: `url(${require("../../utils/images/header.png")})`
+              backgroundImage: `url(${require("../../utils/images/header.png")})`,
+              backgroundSize: "100%"
             }}
           >
             <NavLink style={styles.menuBelow} to="/faq">
               FAQ
             </NavLink>
-            <NavLink style={styles.menuBelow} to="/about">
-              About Us
-            </NavLink>
+            <Button
+              style={{
+                color: COLOR.white,
+                backgroundColor: "transparent",
+                borderWidth: 0,
+                fontSize: SIZE.text,
+                marginRight: 40
+              }}
+              onClick={this.navTo("home", { scrollToAbout: true })}
+            >
+              About
+            </Button>
             <NavLink style={styles.menuBelow} to="/contact">
               Contact Us
             </NavLink>

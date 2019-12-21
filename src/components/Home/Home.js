@@ -69,6 +69,13 @@ export default class Home extends Component {
     }
   ];
 
+  componentDidMount() {
+    const { data } = this.props.location.state;
+    if (data.scrollToAbout) {
+      window.scrollTo(0, this.quotesArea.offsetHeight);
+    }
+  }
+
   render() {
     return (
       <Col style={styles.container}>
@@ -94,7 +101,7 @@ export default class Home extends Component {
               src={require("../../utils/images/avatar.jpg")}
             />
           </Col>
-          <Col span={12} style={{ ...styles.wrapCol, marginLeft: 20 }}>
+          <Col span={12} style={{ ...styles.wrapCol, paddingLeft: 20 }}>
             {this.info.map(item => (
               <div
                 style={{
@@ -109,7 +116,8 @@ export default class Home extends Component {
             ))}
           </Col>
         </Row>
-        <Col
+        <div
+          ref={ref => (this.quotesArea = ref)}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -134,7 +142,7 @@ export default class Home extends Component {
               "{item.content}"
             </div>
           ))}
-        </Col>
+        </div>
       </Col>
     );
   }
