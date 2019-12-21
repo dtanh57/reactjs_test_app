@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
 import { Layout, Icon, Button, Menu, Row, Col, Dropdown } from "antd";
 import { COLOR, SIZE } from "../../utils/";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink, matchPath } from "react-router-dom";
+import { HeaderService } from "./services/HeaderService";
 
 class HeaderContainer extends PureComponent {
   constructor(props) {
@@ -25,6 +26,15 @@ class HeaderContainer extends PureComponent {
     this.props.history.push(`/${value}`, {
       data: data
     });
+  };
+  navToAbout = () => {
+    this.props.history.push(`/home`, {
+      data: { scrollToAbout: true }
+    });
+    if (!!matchPath(this.props.location.pathname, "/home")) {
+      console.log(window.location.pathname);
+      HeaderService.set({ scrollToAbout: true });
+    }
   };
   onDropdownClick = e => {
     let newSelected = this.menuDropdown.find(
@@ -112,7 +122,7 @@ class HeaderContainer extends PureComponent {
                 fontSize: SIZE.text,
                 marginRight: 40
               }}
-              onClick={this.navTo("home", { scrollToAbout: true })}
+              onClick={this.navToAbout}
             >
               About
             </Button>

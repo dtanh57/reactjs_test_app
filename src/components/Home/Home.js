@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row } from "antd";
 import SlideShow from "../../element/slideshow/SlideShow";
+import { HeaderService } from "../HeaderContainer/services/HeaderService";
 
 export default class Home extends Component {
   imageSlide = [
@@ -70,11 +71,20 @@ export default class Home extends Component {
   ];
 
   componentDidMount() {
-    const { data } = this.props.location.state;
-    if (data.scrollToAbout) {
-      window.scrollTo(0, this.quotesArea.offsetHeight);
+    HeaderService.onChange(`Home-HeaderService`, this.onScrollTo);
+    if (
+      this.props.location.state &&
+      this.props.location.state.data.scrollToAbout
+    ) {
+      window.scrollTo(0, this.about.offsetTop);
     }
   }
+
+  onScrollTo = data => {
+    if (data.scrollToAbout) {
+      window.scrollTo(0, this.about.offsetTop);
+    }
+  };
 
   render() {
     return (
@@ -85,7 +95,8 @@ export default class Home extends Component {
           mode={`automatic`}
           timeout={`4000`}
         />
-        <Row
+        <div
+          ref={ref => (this.about = ref)}
           style={{
             display: "flex",
             flexDirection: "row",
@@ -115,9 +126,8 @@ export default class Home extends Component {
               </div>
             ))}
           </Col>
-        </Row>
+        </div>
         <div
-          ref={ref => (this.quotesArea = ref)}
           style={{
             display: "flex",
             flexDirection: "column",
