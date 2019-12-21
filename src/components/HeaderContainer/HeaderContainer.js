@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Layout, Icon, Button, Menu, Row, Col, Dropdown } from "antd";
-import { COLOR, SIZE, STRINGS } from "../../utils/";
+import { COLOR, SIZE, STRINGS, setLanguage, lang } from "../../utils/";
 import { withRouter, NavLink, matchPath } from "react-router-dom";
 import { HeaderService } from "./services/HeaderService";
 
@@ -8,16 +8,18 @@ class HeaderContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "English"
+      selected: lang
     };
     this.menuDropdown = [
       {
         key: 1,
-        value: "English"
+        value: "English",
+        lang: "en"
       },
       {
         key: 2,
-        value: "Vietnamese"
+        value: "Vietnamese",
+        lang: "vi"
       }
     ];
   }
@@ -36,13 +38,15 @@ class HeaderContainer extends PureComponent {
       HeaderService.set({ scrollToAbout: true });
     }
   };
+
   onDropdownClick = e => {
-    let newSelected = this.menuDropdown.find(
+    let indexSelected = this.menuDropdown.find(
       item => item.key === parseInt(e.key, 10)
-    ).value;
+    );
+    let newSelected = indexSelected.value;
+    setLanguage(indexSelected.lang);
     this.setState({ selected: newSelected });
   };
-
   renderDropdown = () => {
     return (
       <Menu onClick={this.onDropdownClick}>

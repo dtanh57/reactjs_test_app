@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row } from "antd";
 import SlideShow from "../../element/slideshow/SlideShow";
 import { HeaderService } from "../HeaderContainer/services/HeaderService";
-import { COLOR } from "../../utils";
+import { COLOR, STRINGS } from "../../utils";
 
 export default class Home extends Component {
   imageSlide = [
@@ -16,7 +16,7 @@ export default class Home extends Component {
   ];
 
   info = [
-    { title: "Name", value: "Đỗ Tuấn Anh" },
+    { title: STRINGS.name, value: "Đỗ Tuấn Anh" },
     { title: "Email", value: "dtanh57@gmail.com" },
     { title: "Phone", value: "084.857.1994" },
     { title: "Role", value: "Developer" },

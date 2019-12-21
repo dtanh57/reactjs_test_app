@@ -1,3 +1,9 @@
+const changeObject = {};
+
+function broadcast() {
+  Object.keys(changeObject).forEach(k => changeObject[k]());
+}
+
 const string_vi = {
   home: "HOME",
   news: "News",
@@ -5,7 +11,8 @@ const string_vi = {
   register: "Register",
   faq: "FAQ",
   about: "About",
-  contact_us: "Contact Us"
+  contact_us: "Contact Us",
+  name: "Name"
 };
 const string_en = {
   home: "Trang chủ",
@@ -14,18 +21,27 @@ const string_en = {
   register: "Đăng ký",
   faq: "FAQ",
   about: "Thông tin web",
-  contact_us: "Liên hệ"
+  contact_us: "Liên hệ",
+  name: "Họ tên"
 };
 
 let STRINGS = { ...string_en, ...string_vi };
+let lang = "English";
 
 const setLanguage = language => {
-  if ((language = "en")) {
-    STRINGS = { ...string_vi, ...string_en };
-  }
-  if ((language = "vi")) {
+  if (language === "en") {
+    lang = "English";
     STRINGS = { ...string_en, ...string_vi };
   }
+  if (language === "vi") {
+    lang = "Vietnamese";
+    STRINGS = { ...string_vi, ...string_en };
+  }
+  broadcast();
 };
 
-export { STRINGS };
+const onChangeLanguage = (key, cb) => {
+  changeObject[key] = () => cb();
+};
+
+export { STRINGS, lang, setLanguage, onChangeLanguage };
