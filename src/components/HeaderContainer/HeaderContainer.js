@@ -71,7 +71,7 @@ class HeaderContainer extends PureComponent {
             />
           </Col>
           <Col span={8}>
-            <Row type="flex" align="end">
+            <Row style={{ display: "flex", justifyContent: "flex-end" }}>
               <Button style={styles.btnJobFAQ} onClick={this.navTo("champion")}>
                 Champions
               </Button>
