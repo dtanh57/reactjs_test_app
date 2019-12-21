@@ -55,14 +55,14 @@ export default class FooterContainer extends Component {
         >
           <div style={{ color: "white" }}>STAY CONNECTED</div>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <a href="http://facebook.com/dtanh57">
+            <a href="http://facebook.com/dtanh57" target="_blank">
               <Icon style={styles.icon} type="facebook" />
             </a>
             <a href="https://www.youtube.com/channel/UCM_k0imPtv8y03Y-bCE87oA">
-              <Icon style={styles.icon} type="youtube" />
+              <Icon style={styles.icon} type="youtube" target="_blank" />
             </a>
             <a href="https://www.instagram.com/dtanh57/">
-              <Icon style={styles.icon} type="instagram" />
+              <Icon style={styles.icon} type="instagram" target="_blank" />
             </a>
           </div>
           <div

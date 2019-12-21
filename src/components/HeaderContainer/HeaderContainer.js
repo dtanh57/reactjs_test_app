@@ -93,11 +93,12 @@ class HeaderContainer extends PureComponent {
             span={14}
             style={{
               display: "flex",
+              backgroundColor: COLOR.grey_light,
               height: 80,
-              backgroundColor: "black",
               justifyContent: "flex-end",
               paddingRight: 100,
-              alignItems: "center"
+              alignItems: "center",
+              backgroundImage: `url(${require("../../utils/images/header.png")})`
             }}
           >
             <NavLink style={styles.menuBelow} to="/faq">
