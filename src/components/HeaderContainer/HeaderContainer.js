@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Layout, Icon, Button, Menu, Row, Col, Dropdown } from "antd";
-import { COLOR, SIZE } from "../../utils/";
+import { COLOR, SIZE, STRINGS } from "../../utils/";
 import { withRouter, NavLink, matchPath } from "react-router-dom";
 import { HeaderService } from "./services/HeaderService";
 
@@ -60,7 +60,7 @@ class HeaderContainer extends PureComponent {
         <Row style={styles.container}>
           <Col span={8}>
             <Button style={styles.btnLogo} onClick={this.navTo("home")}>
-              HOME
+              {STRINGS.home}
             </Button>
           </Col>
           <Col span={8} style={{ display: "flex", justifyContent: "center" }}>
@@ -73,16 +73,16 @@ class HeaderContainer extends PureComponent {
           <Col span={8}>
             <Row style={{ display: "flex", justifyContent: "flex-end" }}>
               <Button style={styles.btnJobFAQ} onClick={this.navTo("champion")}>
-                Champions
+                {STRINGS.champions}
               </Button>
               <Button style={styles.btnJobFAQ} onClick={this.navTo("news")}>
-                News
+                {STRINGS.news}
               </Button>
               <Button
                 style={styles.btnJobFAQ}
                 onClick={this.navTo("submitGame")}
               >
-                Register
+                {STRINGS.register}
               </Button>
               <Dropdown overlay={this.renderDropdown} trigger={["click"]}>
                 <Button style={styles.btnSubmit}>
@@ -112,7 +112,7 @@ class HeaderContainer extends PureComponent {
             }}
           >
             <NavLink style={styles.menuBelow} to="/faq">
-              FAQ
+              {STRINGS.faq}
             </NavLink>
             <Button
               style={{
@@ -124,10 +124,10 @@ class HeaderContainer extends PureComponent {
               }}
               onClick={this.navToAbout}
             >
-              About
+              {STRINGS.about}
             </Button>
             <NavLink style={styles.menuBelow} to="/contact">
-              Contact Us
+              {STRINGS.contact_us}
             </NavLink>
           </Col>
         </Row>

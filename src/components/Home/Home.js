@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Row } from "antd";
 import SlideShow from "../../element/slideshow/SlideShow";
 import { HeaderService } from "../HeaderContainer/services/HeaderService";
+import { COLOR } from "../../utils";
 
 export default class Home extends Component {
   imageSlide = [
@@ -142,6 +143,9 @@ export default class Home extends Component {
             backgroundImage: `url(${require("../../utils/images/background_dark.jpg")})`
           }}
         >
+          <p style={{ color: COLOR.white, fontSize: 40, fontWeight: "bold" }}>
+            QUOTES
+          </p>
           {this.quotes.map(item => (
             <div
               style={{
