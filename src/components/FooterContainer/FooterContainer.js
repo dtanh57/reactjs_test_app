@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Icon } from "antd";
-import { COLOR, SIZE } from "../../utils";
+import { COLOR, SIZE, STRINGS } from "../../utils";
 import { NavLink, Link } from "react-router-dom";
 
 export default class FooterContainer extends Component {
@@ -32,15 +32,15 @@ export default class FooterContainer extends Component {
             }}
           >
             <Col span={12} style={styles.col}>
-              <NavLink to="/home">Home</NavLink>
-              <NavLink to="/champion">Champion</NavLink>
-              <NavLink to="/news">News</NavLink>
-              <NavLink to="/submitGame">Register</NavLink>
+              <NavLink to="/home">{STRINGS.home}</NavLink>
+              <NavLink to="/champion">{STRINGS.champions}</NavLink>
+              <NavLink to="/news">{STRINGS.news}</NavLink>
+              <NavLink to="/submitGame">{STRINGS.register}</NavLink>
             </Col>
             <Col span={12} style={styles.col}>
-              <NavLink to="/faq">FAQ</NavLink>
-              <NavLink to="/about">About Us</NavLink>
-              <NavLink to="/contact">Contact Us</NavLink>
+              <NavLink to="/faq">{STRINGS.faq}</NavLink>
+              <NavLink to="/about">{STRINGS.about}</NavLink>
+              <NavLink to="/contact">{STRINGS.contact_us}</NavLink>
             </Col>
           </Row>
         </Col>
@@ -53,7 +53,7 @@ export default class FooterContainer extends Component {
             marginTop: 30
           }}
         >
-          <div style={{ color: "white" }}>STAY CONNECTED</div>
+          <div style={{ color: "white" }}>{STRINGS.stay_connected}</div>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <a href="http://facebook.com/dtanh57" target="_blank">
               <Icon style={styles.icon} type="facebook" />
@@ -77,7 +77,7 @@ export default class FooterContainer extends Component {
               COPYRIGHT © Do Tuan Anh 12/2019
             </p>
             <p style={{ color: COLOR.white, alignSelf: "flex-end" }}>
-              Terms of Service | Privacy Policy
+              {STRINGS.terms_of_service} | {STRINGS.privacy_policy}
             </p>
           </div>
         </Col>

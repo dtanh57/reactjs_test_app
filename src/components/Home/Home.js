@@ -17,20 +17,20 @@ export default class Home extends Component {
 
   info = [
     { title: STRINGS.name, value: "Đỗ Tuấn Anh" },
-    { title: "Email", value: "dtanh57@gmail.com" },
-    { title: "Phone", value: "084.857.1994" },
-    { title: "Role", value: "Developer" },
-    { title: "Programming Language", value: "Java, Javascript, ..." },
+    { title: STRINGS.email, value: "dtanh57@gmail.com" },
+    { title: STRINGS.phone, value: "084.857.1994" },
+    { title: STRINGS.role, value: "Developer" },
+    { title: STRINGS.programming_language, value: "Java, Javascript, ..." },
     {
-      title: "Technique",
+      title: STRINGS.technique,
       value: "React Native, Reactjs, Android Java, Html, Css, ..."
     },
     {
-      title: "Intent",
+      title: STRINGS.intent,
       value: "Become a pro dev, travel to Franch, ..."
     },
-    { title: "Language", value: "French, English" },
-    { title: "Hobby", value: "Gaming, football, sleeping, reading, ..." }
+    { title: STRINGS.language, value: "French, English" },
+    { title: STRINGS.hobby, value: "Gaming, football, sleeping, reading, ..." }
   ];
 
   quotes = [
@@ -144,16 +144,16 @@ export default class Home extends Component {
           }}
         >
           <p style={{ color: COLOR.white, fontSize: 40, fontWeight: "bold" }}>
-            QUOTES
+            {STRINGS.quotes}
           </p>
-          {this.quotes.map(item => (
+          {this.quotes.map((item, index) => (
             <div
               style={{
                 paddingBottom: 30,
                 alignSelf: "center",
                 fontWeight: "500",
                 fontSize: 20,
-                color: "white"
+                color: index % 2 === 0 ? "white" : "#D9E8A6"
               }}
               key={item.id}
             >
