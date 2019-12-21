@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row } from "antd";
 import SlideShow from "../../element/slideshow/SlideShow";
+import { HeaderService } from "../HeaderContainer/services/HeaderService";
 
 export default class Home extends Component {
   imageSlide = [
@@ -73,6 +74,22 @@ export default class Home extends Component {
     }
   ];
 
+  componentDidMount() {
+    HeaderService.onChange(`Home-HeaderService`, this.onScrollTo);
+    if (
+      this.props.location.state &&
+      this.props.location.state.data.scrollToAbout
+    ) {
+      window.scrollTo(0, this.about.offsetTop);
+    }
+  }
+
+  onScrollTo = data => {
+    if (data.scrollToAbout) {
+      window.scrollTo(0, this.about.offsetTop);
+    }
+  };
+
   render() {
     return (
       <Col style={styles.container}>
@@ -82,7 +99,8 @@ export default class Home extends Component {
           mode={`automatic`}
           timeout={`4000`}
         />
-        <Row
+        <div
+          ref={ref => (this.about = ref)}
           style={{
             display: "flex",
             flexDirection: "row",
@@ -98,7 +116,7 @@ export default class Home extends Component {
               src={require("../../utils/images/avatar.jpg")}
             />
           </Col>
-          <Col span={12} style={{ ...styles.wrapCol, marginLeft: 20 }}>
+          <Col span={12} style={{ ...styles.wrapCol, paddingLeft: 20 }}>
             {this.info.map(item => (
               <div
                 style={{
@@ -112,8 +130,8 @@ export default class Home extends Component {
               </div>
             ))}
           </Col>
-        </Row>
-        <Col
+        </div>
+        <div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -138,7 +156,7 @@ export default class Home extends Component {
               "{item.content}"
             </div>
           ))}
-        </Col>
+        </div>
       </Col>
     );
   }

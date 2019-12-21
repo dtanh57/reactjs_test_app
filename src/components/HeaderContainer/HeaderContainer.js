@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
 import { Layout, Icon, Button, Menu, Row, Col, Dropdown } from "antd";
 import { COLOR, SIZE } from "../../utils/";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink, matchPath } from "react-router-dom";
+import { HeaderService } from "./services/HeaderService";
 
 class HeaderContainer extends PureComponent {
   constructor(props) {
@@ -21,10 +22,19 @@ class HeaderContainer extends PureComponent {
     ];
   }
 
-  navTo = value => () => {
+  navTo = (value, data = {}) => () => {
     this.props.history.push(`/${value}`, {
-      // name: item.id
+      data: data
     });
+  };
+  navToAbout = () => {
+    this.props.history.push(`/home`, {
+      data: { scrollToAbout: true }
+    });
+    if (!!matchPath(this.props.location.pathname, "/home")) {
+      console.log(window.location.pathname);
+      HeaderService.set({ scrollToAbout: true });
+    }
   };
   onDropdownClick = e => {
     let newSelected = this.menuDropdown.find(
@@ -61,7 +71,7 @@ class HeaderContainer extends PureComponent {
             />
           </Col>
           <Col span={8}>
-            <Row type="flex" align="end">
+            <Row style={{ display: "flex", justifyContent: "flex-end" }}>
               <Button style={styles.btnJobFAQ} onClick={this.navTo("champion")}>
                 Champions
               </Button>
@@ -96,17 +106,26 @@ class HeaderContainer extends PureComponent {
               backgroundColor: COLOR.grey_light,
               height: 80,
               justifyContent: "flex-end",
-              paddingRight: 100,
               alignItems: "center",
-              backgroundImage: `url(${require("../../utils/images/header.png")})`
+              backgroundImage: `url(${require("../../utils/images/header.png")})`,
+              backgroundSize: "100%"
             }}
           >
             <NavLink style={styles.menuBelow} to="/faq">
               FAQ
             </NavLink>
-            <NavLink style={styles.menuBelow} to="/about">
-              About Us
-            </NavLink>
+            <Button
+              style={{
+                color: COLOR.white,
+                backgroundColor: "transparent",
+                borderWidth: 0,
+                fontSize: SIZE.text,
+                marginRight: 40
+              }}
+              onClick={this.navToAbout}
+            >
+              About
+            </Button>
             <NavLink style={styles.menuBelow} to="/contact">
               Contact Us
             </NavLink>
