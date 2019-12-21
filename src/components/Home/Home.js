@@ -66,6 +66,10 @@ export default class Home extends Component {
     {
       id: 12,
       content: "Đái ra trường ngày đầu năm học. Một ngày khai trường"
+    },
+    {
+      id: 13,
+      content: "Người mẹ yêu âm nhạc: Thấy vui khi con try hard"
     }
   ];
 
