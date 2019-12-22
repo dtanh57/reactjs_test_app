@@ -56,7 +56,8 @@ export default class Champion extends PureComponent {
   };
 
   render() {
-    const { data, loading } = this.state.data;
+    const { data } = this.state.data;
+    const { loading } = this.state;
     let arr = [];
     if (!!data) {
       arr = Object.values(data);
@@ -70,12 +71,12 @@ export default class Champion extends PureComponent {
             <Input
               style={{
                 margin: "10px 0px 10px 0px",
-                border: "1px red solid",
-                padding: "6px"
+                border: "1px blue solid",
+                padding: "6px",
+                width: "50%"
               }}
-              disableUnderline={true}
               onKeyPress={this.onKeyPress}
-              inputRef={ref => (this.input = ref)}
+              ref={ref => (this.input = ref)}
               placeholder={"Enter champion"}
             />
 
@@ -84,7 +85,7 @@ export default class Champion extends PureComponent {
               color="secondary"
               onClick={this.onSubmit}
             >
-              {STRINGS.submit}
+              {STRINGS.search}
             </Button>
 
             <div
@@ -92,7 +93,8 @@ export default class Champion extends PureComponent {
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
-                marginTop: 12
+                marginTop: 12,
+                justifyContent: "center"
               }}
             >
               {arr.map(item => (
@@ -104,7 +106,8 @@ export default class Champion extends PureComponent {
                     flexDirection: "column",
                     textAlign: "center",
                     marginLeft: "6px",
-                    position: "relative"
+                    position: "relative",
+                    width: 96
                   }}
                 >
                   <img
@@ -112,8 +115,7 @@ export default class Champion extends PureComponent {
                     src={this.onGetImage(item.image.full)}
                   />
                   <Button style={styles.name}>
-                    {/* <p onClick={this.goToChampDetail(item)}>{item.name}</p> */}
-                    <p>{item.name}</p>
+                    <div onClick={this.goToChampDetail(item)}>{item.name}</div>
                   </Button>
                   <p className="title" style={styles.title}>
                     {item.title}
@@ -131,17 +133,14 @@ export default class Champion extends PureComponent {
 const styles = {
   name: {
     textAlign: "center",
-    width: "96px",
-    height: "48px",
     padding: "0px",
-    marginBottom: 20
+    marginBottom: 20,
+    justifyContent: "center"
   },
   container: {
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    minHeight: 1000,
-    backgroundColor: "grey",
     justifyContent: "center",
     alignItems: "center"
   }

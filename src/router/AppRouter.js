@@ -6,6 +6,7 @@ import News from "../components/News/News";
 import Champion from "../components/Champion/Champion";
 import FAQ from "../components/FAQ/FAQ";
 import Contact from "../components/Contact/Contact";
+import ChampDetail from "../components/ChampDetail/ChampDetail";
 
 class AppRouter extends Component {
   render() {
@@ -18,6 +19,7 @@ class AppRouter extends Component {
         <Route exact path="/champion" component={Champion} />
         <Route exact path="/faq" component={FAQ} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/champDetail" component={ChampDetail} />
         {/* <Route path="/tin-tuc/:slug.:id.html" component={NewsDetail} />  */}
       </div>
     );

@@ -40,7 +40,8 @@ const string_en = {
   your_name_placeholder: "Enter your name",
   your_email_placeholder: "Enter your email",
   your_subject_placeholder: "Enter your subject",
-  submit: "Submit"
+  submit: "Submit",
+  search: "Search"
 };
 const string_vi = {
   //validate
@@ -78,7 +79,8 @@ const string_vi = {
   your_name_placeholder: "Nhập tên của bạn",
   your_email_placeholder: "Nhập email của bạn",
   your_subject_placeholder: "Nhập subject của bạn",
-  submit: "Xác nhận"
+  submit: "Xác nhận",
+  search: "Tìm kiếm"
 };
 
 let STRINGS = { ...string_vi, ...string_en };
