@@ -41,7 +41,7 @@ export default class Champion extends PureComponent {
 
   onSubmit = () => {
     this.props.history.push("/champDetail", {
-      name: this.input.value
+      name: this.input.state.value
     });
   };
   onKeyPress = e => {
