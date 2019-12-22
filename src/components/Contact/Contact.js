@@ -3,6 +3,22 @@ import { STRINGS, COLOR, SIZE } from "../../utils";
 import { Input, Button, Select } from "antd";
 
 export default class Contact extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: {
+        name: "",
+        email: "",
+        subject: ""
+      },
+      validate: {
+        name: true,
+        email: true,
+        subject: true
+      }
+    };
+  }
+
   componentDidMount() {
     window.scrollTo(0, this.container.offsetTop);
   }

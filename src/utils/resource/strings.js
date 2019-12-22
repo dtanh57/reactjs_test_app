@@ -5,6 +5,10 @@ function broadcast() {
 }
 
 const string_en = {
+  //validate
+  this_field_is_required: "This field is required",
+  email_error: "Please enter a valid email address!",
+
   home: "HOME",
   news: "News",
   champions: "Champions",
@@ -38,6 +42,10 @@ const string_en = {
   your_subject_placeholder: "Enter your subject"
 };
 const string_vi = {
+  //validate
+  this_field_is_required: "Trường này không được để trống",
+  email_error: "Vui lòng nhập đúng định dạng email!",
+
   home: "Trang chủ",
   news: "Tin tức",
   champions: "Tướng",
