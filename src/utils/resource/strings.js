@@ -41,7 +41,11 @@ const string_en = {
   your_email_placeholder: "Enter your email",
   your_subject_placeholder: "Enter your subject",
   submit: "Submit",
-  search: "Search"
+  search: "Search",
+  date: "Date",
+  author: "Author",
+  title: "Title",
+  read_more: "Read more"
 };
 const string_vi = {
   //validate
@@ -80,7 +84,11 @@ const string_vi = {
   your_email_placeholder: "Nhập email của bạn",
   your_subject_placeholder: "Nhập subject của bạn",
   submit: "Xác nhận",
-  search: "Tìm kiếm"
+  search: "Tìm kiếm",
+  date: "Ngày",
+  author: "Tác giả",
+  title: "Tiêu đề",
+  read_more: "Đọc tiếp"
 };
 
 let STRINGS = { ...string_vi, ...string_en };
