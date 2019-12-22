@@ -1,0 +1,27 @@
+.title {
+  position: absolute;
+  color: white;
+  opacity: 0;
+  bottom: 0;
+}
+
+.img-home {
+  width: 96px;
+  height: 96px;
+}
+
+.container:hover .title {
+  opacity: 1;
+  transition: 1s;
+  transform: translateY(-48px);
+  animation: test 0.4s linear;
+}
+
+@keyframes test {
+  0% {
+    transform: scale(0.3) rotate(0deg) translateY(0px);
+  }
+  100% {
+    transform: scale(1) rotate(360deg) translateY(-48px);
+  }
+}
