@@ -39,7 +39,8 @@ const string_en = {
   your_message: "Your message",
   your_name_placeholder: "Enter your name",
   your_email_placeholder: "Enter your email",
-  your_subject_placeholder: "Enter your subject"
+  your_subject_placeholder: "Enter your subject",
+  submit: "Submit"
 };
 const string_vi = {
   //validate
@@ -76,7 +77,8 @@ const string_vi = {
   your_message: "Tin nhắn của bạn",
   your_name_placeholder: "Nhập tên của bạn",
   your_email_placeholder: "Nhập email của bạn",
-  your_subject_placeholder: "Nhập subject của bạn"
+  your_subject_placeholder: "Nhập subject của bạn",
+  submit: "Xác nhận"
 };
 
 let STRINGS = { ...string_vi, ...string_en };
