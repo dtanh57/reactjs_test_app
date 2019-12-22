@@ -97,14 +97,14 @@ class HeaderContainer extends PureComponent {
           </Col>
         </Row>
         <Row style={styles.containerBelow}>
-          <Col span={10} style={{ display: "flex", justifyContent: "center" }}>
+          <Col span={11} style={{ display: "flex", justifyContent: "center" }}>
             <img
               style={{ height: 80 }}
               src={require("../../utils/images/logo.png")}
             />
           </Col>
           <Col
-            span={14}
+            span={13}
             style={{
               display: "flex",
               backgroundColor: COLOR.grey_light,

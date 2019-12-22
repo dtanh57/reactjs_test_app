@@ -8,6 +8,7 @@ export default class News extends PureComponent {
 
 const styles = {
   container: {
+    display: "flex",
     width: "100%",
     minHeight: 1000,
     backgroundColor: "green",
