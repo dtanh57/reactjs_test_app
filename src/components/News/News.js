@@ -28,8 +28,9 @@ export default class News extends PureComponent {
   };
 
   fetchData = async () => {
+    let getDay = moment().format("YYYY-MM-DD");
     let result = await fetch(
-      "https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-22&sortBy=publishedAt&apiKey=96744c1ba43243ca83f8ce40b085fae1",
+      `https://newsapi.org/v2/everything?q=bitcoin&from=${getDay}&sortBy=publishedAt&apiKey=96744c1ba43243ca83f8ce40b085fae1`,
       { method: "GET" }
     );
     if (result.status === 200) {
@@ -38,7 +39,7 @@ export default class News extends PureComponent {
       this.state.data = res.articles;
     } else {
       this.state.error.status = true;
-      this.state.error.message = "Server Error";
+      this.state.error.message = "Can not get data";
     }
   };
 
